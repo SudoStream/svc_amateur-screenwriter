@@ -1,0 +1,80 @@
+{
+  "info": {
+    "title": "Star Birth",
+    "description": "This API allows you to create stars",
+    "version": "1.0.0"
+  },
+  "host": "starbirth.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/v1",
+  "produces": [
+    "application/json"
+  ],
+  "happy_path_tests": [
+    {
+      "path": "/stars",
+      "method": "GET",
+      "status_codes_documented": [
+        {
+          "response_code": 200,
+          "schema": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "/stars",
+      "verb": "POST",
+      "status_codes_documented": [
+        {
+          "response_code": 200,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "starName": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "response_code": 409,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "starName": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "path": "/stars/{starId}",
+      "method": "GET",
+      "status_codes_documented": [
+        {
+          "response_code": 200,
+          "schema": {
+            "type": "array",
+            "properties": {
+              "starName": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "response_code": 200
+        }
+      ]
+    }
+  ]
+}

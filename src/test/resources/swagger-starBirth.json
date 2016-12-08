@@ -1,0 +1,102 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Star Birth",
+    "description": "This API allows you to create stars",
+    "version": "1.0.0"
+  },
+  "host": "starbirth.com",
+  "schemes": [
+    "https"
+  ],
+  "basePath": "/v1",
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/stars": {
+      "get": {
+        "summary": "All the stars in the system",
+        "description": "Lists all the stars currently in the system\n",
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved list of all stars",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new star",
+        "description": "This operation will create a new star so long as it doesn't already exist.\n",
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "starDetails",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "starName": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully created a new star",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "starId": {
+                  "type": "string"
+                },
+                "starName": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "There is already a star with that name"
+          }
+        }
+      }
+    },
+    "/stars/{starId}": {
+      "get": {
+        "summary": "Says hello to the star",
+        "description": "If the starId exists then this will say hello to it.",
+        "parameters": [
+          {
+            "name": "starId",
+            "in": "path",
+            "description": "ID of star to fetch",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Stars exists, let's say hello.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "There ain't no star by that name"
+          }
+        }
+      }
+    }
+  }
+}
