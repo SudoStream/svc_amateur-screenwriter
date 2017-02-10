@@ -1,4 +1,4 @@
-package io.sudostream.api_event_horizon.scram.api
+package io.sudostream.api_event_horizon.screenplay_guild.api
 
 import java.io._
 

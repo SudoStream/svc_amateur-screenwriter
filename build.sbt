@@ -1,4 +1,4 @@
-name := """scram"""
+name := """screenplay-guild-for-amateurs"""
 
 organization := "io.sudostream.api-event-horizon"
 
