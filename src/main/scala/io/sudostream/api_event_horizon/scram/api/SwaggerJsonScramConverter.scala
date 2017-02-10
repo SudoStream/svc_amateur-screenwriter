@@ -12,7 +12,7 @@ class SwaggerJsonScramConverter extends ScramConverter
     * @param swaggerApiAsJsonString String version of an API specification
     * @return
     */
-  override def convertToScram(swaggerApiAsJsonString: String): Option[Scram] =
+  override def convertToScram(swaggerApiAsJsonString: String): Option[ScreenplayWriterAmateur] =
   {
     val apiSwaggerDeserialistaionResult = new SwaggerParser().readWithInfo(swaggerApiAsJsonString)
     if (apiSwaggerDeserialistaionResult.getSwagger == null)
@@ -21,7 +21,7 @@ class SwaggerJsonScramConverter extends ScramConverter
     }
     else
     {
-     Some(new Scram(apiSwaggerDeserialistaionResult.getSwagger))
+     Some(new ScreenplayWriterAmateur(apiSwaggerDeserialistaionResult.getSwagger))
     }
   }
 

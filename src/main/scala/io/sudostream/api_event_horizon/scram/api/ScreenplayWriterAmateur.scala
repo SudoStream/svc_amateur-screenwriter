@@ -5,7 +5,7 @@ import io.swagger.models.{Operation, Path, Swagger}
 
 import scala.collection.JavaConverters._
 
-class Scram(swaggerModel: Swagger) {
+class ScreenplayWriterAmateur(swaggerModel: Swagger) {
   private val swagger = swaggerModel
 
   def shortApiDescription: String = swagger.getInfo.getDescription

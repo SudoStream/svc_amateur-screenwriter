@@ -3,12 +3,12 @@ package bdd
 import java.io.InputStream
 
 import cucumber.api.scala.{EN, ScalaDsl}
-import io.sudostream.api_event_horizon.scram.api.{Scram, ScramConverter, SwaggerJsonScramConverter}
+import io.sudostream.api_event_horizon.scram.api.{ScreenplayWriterAmateur, ScramConverter, SwaggerJsonScramConverter}
 import org.scalatest.ShouldMatchers
 import play.api.libs.json.JsObject
 
 class SwaggerStarBirthResourceOperationStepDefinitions extends ScalaDsl with EN with ShouldMatchers {
-  var starBirthScram: Option[Scram] = Option.empty
+  var starBirthScram: Option[ScreenplayWriterAmateur] = Option.empty
 
   val scramConverter: ScramConverter = new SwaggerJsonScramConverter
   val swaggerJsonHelloStream: InputStream = getClass.getResourceAsStream("/swagger-starBirth.json")

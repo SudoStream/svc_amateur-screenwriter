@@ -9,5 +9,5 @@ trait ScramConverter
     * @param inputApiDefinition String version of an API specification
     * @return
     */
-  def convertToScram(inputApiDefinition: String) : Option[Scram]
+  def convertToScram(inputApiDefinition: String) : Option[ScreenplayWriterAmateur]
 }

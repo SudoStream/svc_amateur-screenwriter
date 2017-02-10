@@ -10,7 +10,7 @@ import org.apache.avro.io.{DatumReader, DatumWriter, DecoderFactory, EncoderFact
 import org.apache.avro.specific.{SpecificDatumReader, SpecificDatumWriter}
 import org.scalatest.FunSuite
 
-class SwaggerJsonScramConverterTest
+class SwaggerJsonScreenplayWriterAmateurConverterTest
   extends FunSuite {
 
   val swaggerJsonHelloApi =
