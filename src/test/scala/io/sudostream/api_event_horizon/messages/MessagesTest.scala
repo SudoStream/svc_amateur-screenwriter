@@ -9,7 +9,7 @@ class MessagesTest extends FunSuite {
     val aSingleTestDescription = TestDescription("/stars", HttpMethod.GET, List(200))
 
     val generatedEvent =
-      GeneratedTestsEvent(
+      SpeculativeScreenPlay(
         "apiTitle",
         Some("apiDesc"),
         Some("v1"),

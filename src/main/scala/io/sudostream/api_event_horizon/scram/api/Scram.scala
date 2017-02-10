@@ -1,6 +1,6 @@
 package io.sudostream.api_event_horizon.scram.api
 
-import io.sudostream.api_event_horizon.messages.{GeneratedTestsEvent, HttpMethod, TestDescription}
+import io.sudostream.api_event_horizon.messages.{HttpMethod, SpeculativeScreenPlay, TestDescription}
 import io.swagger.models.{Operation, Path, Swagger}
 
 import scala.collection.JavaConverters._
@@ -10,7 +10,7 @@ class Scram(swaggerModel: Swagger) {
 
   def shortApiDescription: String = swagger.getInfo.getDescription
 
-  def generateHappyPathTests: GeneratedTestsEvent = {
+  def generateHappyPathTests: SpeculativeScreenPlay = {
 
     val apiTitle = swagger.getInfo.getTitle
     val apiDescription = swagger.getInfo.getDescription
@@ -22,7 +22,7 @@ class Scram(swaggerModel: Swagger) {
 
     val happyPathTests = extractTheHappyTests
 
-    GeneratedTestsEvent(
+    SpeculativeScreenPlay(
       apiTitle, Some(apiDescription), Some(apiVersion), hostname, Some(basePath), schemes, ports, happyPathTests)
   }
 
