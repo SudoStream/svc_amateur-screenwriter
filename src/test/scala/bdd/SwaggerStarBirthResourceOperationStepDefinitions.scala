@@ -3,14 +3,14 @@ package bdd
 import java.io.InputStream
 
 import cucumber.api.scala.{EN, ScalaDsl}
-import io.sudostream.api_event_horizon.scram.api.{ScreenplayWriterAmateur, ScramConverter, SwaggerJsonScramConverter}
+import io.sudostream.api_event_horizon.scram.api.{ScreenplayWriterAmateur, ScreenplayWriterConverter, SwaggerJsonScreenplayWriterConverter}
 import org.scalatest.ShouldMatchers
 import play.api.libs.json.JsObject
 
 class SwaggerStarBirthResourceOperationStepDefinitions extends ScalaDsl with EN with ShouldMatchers {
   var starBirthScram: Option[ScreenplayWriterAmateur] = Option.empty
 
-  val scramConverter: ScramConverter = new SwaggerJsonScramConverter
+  val scramConverter: ScreenplayWriterConverter = new SwaggerJsonScreenplayWriterConverter
   val swaggerJsonHelloStream: InputStream = getClass.getResourceAsStream("/swagger-starBirth.json")
   val swaggerHelloJson = scala.io.Source.fromInputStream(swaggerJsonHelloStream).getLines() mkString "\n"
 
@@ -19,7 +19,7 @@ class SwaggerStarBirthResourceOperationStepDefinitions extends ScalaDsl with EN 
   }
 
   When("""^I ask for the number of happy path tests$""") { () =>
-    starBirthScram = scramConverter.convertToScram(swaggerHelloJson)
+    starBirthScram = scramConverter.convertToScreenplayWriterAmateur(swaggerHelloJson)
   }
   Then("""^I should get 3 happy path tests""") { () =>
     if (starBirthScram.nonEmpty) {

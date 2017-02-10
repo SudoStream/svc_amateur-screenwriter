@@ -66,7 +66,7 @@ class SwaggerJsonScreenplayWriterAmateurConverterTest
   }
 
   test("Simple Hello World Json Spec parsed to give expected meta values") {
-    val converter = new SwaggerJsonScramConverter
+    val converter = new SwaggerJsonScreenplayWriterConverter
     val swaggerDeserialized = new SwaggerParser().readWithInfo(swaggerJsonHelloApi)
     val swaggerDefn = swaggerDeserialized.getSwagger
     assert(swaggerDefn.getBasePath === "/v1")
@@ -100,7 +100,7 @@ class SwaggerJsonScreenplayWriterAmateurConverterTest
   def generateTestsFromSwagger: SpeculativeScreenplay = {
     val swaggerJsonHelloStream: InputStream = getClass.getResourceAsStream("/swagger-starBirth.json")
     val swaggerHelloJson = scala.io.Source.fromInputStream(swaggerJsonHelloStream).getLines() mkString "\n"
-    val starBirthScram = new SwaggerJsonScramConverter().convertToScram(swaggerHelloJson).get
+    val starBirthScram = new SwaggerJsonScreenplayWriterConverter().convertToScreenplayWriterAmateur(swaggerHelloJson).get
     val happyTests = starBirthScram.generateHappyPathTests
     happyTests
   }

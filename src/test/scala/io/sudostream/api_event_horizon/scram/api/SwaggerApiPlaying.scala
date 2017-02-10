@@ -12,7 +12,7 @@ class SwaggerApiPlaying extends FunSuite
 
   test("Lets play with swagger definition")
   {
-    val converter = new SwaggerJsonScramConverter
+    val converter = new SwaggerJsonScreenplayWriterConverter
     val swaggerDefn = new SwaggerParser().readWithInfo(swaggerHelloJson).getSwagger
 
     import scala.collection.JavaConverters._
