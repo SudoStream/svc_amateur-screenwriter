@@ -1,6 +1,6 @@
 package io.sudostream.api_event_horizon.scram.api
 
-trait ScreenplayWriterConverter
+trait ApiToScreenplayWriterConverter
 {
   /**
     * Takes a string version of an API definition ( for example a Swagger json API definition )
@@ -9,5 +9,5 @@ trait ScreenplayWriterConverter
     * @param inputApiDefinition String version of an API specification
     * @return
     */
-  def convertToScreenplayWriterAmateur(inputApiDefinition: String) : Option[ScreenplayWriterAmateur]
+  def passApiDefinitionToScreenplayWriterAmateur(inputApiDefinition: String) : Option[ScreenplayWriterAmateur]
 }

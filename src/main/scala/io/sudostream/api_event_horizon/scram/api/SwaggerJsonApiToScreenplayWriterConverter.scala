@@ -2,8 +2,7 @@ package io.sudostream.api_event_horizon.scram.api
 
 import io.swagger.parser.SwaggerParser
 
-class SwaggerJsonScreenplayWriterConverter extends ScreenplayWriterConverter
-{
+class SwaggerJsonApiToScreenplayWriterConverter extends ApiToScreenplayWriterConverter {
 
   /**
     * Takes a string version of an API definition ( for example a Swagger json API definition )
@@ -12,16 +11,13 @@ class SwaggerJsonScreenplayWriterConverter extends ScreenplayWriterConverter
     * @param swaggerApiAsJsonString String version of an API specification
     * @return
     */
-  override def convertToScreenplayWriterAmateur(swaggerApiAsJsonString: String): Option[ScreenplayWriterAmateur] =
-  {
+  override def passApiDefinitionToScreenplayWriterAmateur(swaggerApiAsJsonString: String): Option[ScreenplayWriterAmateur] = {
     val apiSwaggerDeserializationResult = new SwaggerParser().readWithInfo(swaggerApiAsJsonString)
-    if (apiSwaggerDeserializationResult.getSwagger == null)
-    {
+    if (apiSwaggerDeserializationResult.getSwagger == null) {
       None
     }
-    else
-    {
-     Some(new ScreenplayWriterAmateur(apiSwaggerDeserializationResult.getSwagger))
+    else {
+      Some(new ScreenplayWriterAmateur(apiSwaggerDeserializationResult.getSwagger))
     }
   }
 
