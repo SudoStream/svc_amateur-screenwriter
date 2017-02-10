@@ -2,11 +2,10 @@ package io.sudostream.api_event_horizon.scram.api
 
 import java.io._
 
-import io.sudostream.api_event_horizon.messages.{GeneratedTestsEvent, HttpMethod}
+import io.sudostream.api_event_horizon.messages.{HttpMethod, SpeculativeScreenplay}
 import io.swagger.models.Scheme
 import io.swagger.parser.SwaggerParser
 import org.apache.avro.file.{DataFileReader, DataFileWriter}
-import org.apache.avro.generic.GenericDatumReader
 import org.apache.avro.io.{DatumReader, DatumWriter, DecoderFactory, EncoderFactory}
 import org.apache.avro.specific.{SpecificDatumReader, SpecificDatumWriter}
 import org.scalatest.FunSuite
@@ -85,20 +84,20 @@ class SwaggerJsonScramConverterTest
       | """.stripMargin
 
   test("Ensure that when the expected number of happy path tests are generated") {
-    val happyTests: GeneratedTestsEvent = generateTestsFromSwagger
-    assert(happyTests.generatedTests.size === 3)
+    val happyTests: SpeculativeScreenplay = generateTestsFromSwagger
+    assert(happyTests.templateInterrogationOfAntagonist.size === 4)
   }
 
   test("Ensure the top level GET /stars test has expected detail") {
-    val happyTests: GeneratedTestsEvent = generateTestsFromSwagger
-    val foundTest = happyTests.generatedTests.filter(
+    val happyTests: SpeculativeScreenplay = generateTestsFromSwagger
+    val foundTest = happyTests.templateInterrogationOfAntagonist.filter(
       test => HttpMethod.GET.equals(test.method) && test.uriPath == "/stars")
 
     println(happyTests)
     assert(foundTest.size === 1)
   }
 
-  def generateTestsFromSwagger: GeneratedTestsEvent = {
+  def generateTestsFromSwagger: SpeculativeScreenplay = {
     val swaggerJsonHelloStream: InputStream = getClass.getResourceAsStream("/swagger-starBirth.json")
     val swaggerHelloJson = scala.io.Source.fromInputStream(swaggerJsonHelloStream).getLines() mkString "\n"
     val starBirthScram = new SwaggerJsonScramConverter().convertToScram(swaggerHelloJson).get
@@ -107,21 +106,21 @@ class SwaggerJsonScramConverterTest
   }
 
   test("Lets serialise and deserialise with Avro using files as intermediate") {
-    val happyTests: GeneratedTestsEvent = generateTestsFromSwagger
+    val happyTests: SpeculativeScreenplay = generateTestsFromSwagger
 
     // serialize
-    val generatedTestsDatumWriter: DatumWriter[GeneratedTestsEvent] = new SpecificDatumWriter[GeneratedTestsEvent](happyTests.getSchema)
-    val dataFileWriter: DataFileWriter[GeneratedTestsEvent] = new DataFileWriter[GeneratedTestsEvent](generatedTestsDatumWriter)
+    val generatedTestsDatumWriter: DatumWriter[SpeculativeScreenplay] = new SpecificDatumWriter[SpeculativeScreenplay](happyTests.getSchema)
+    val dataFileWriter: DataFileWriter[SpeculativeScreenplay] = new DataFileWriter[SpeculativeScreenplay](generatedTestsDatumWriter)
     dataFileWriter.create(happyTests.getSchema(), new File("happy.avro"))
     dataFileWriter.append(happyTests)
     dataFileWriter.close()
 
     // Deserialize  from disk
-    val generatedTestsDatumReader: DatumReader[GeneratedTestsEvent] = new SpecificDatumReader[GeneratedTestsEvent](happyTests.getSchema)
-    val dataFileReader: DataFileReader[GeneratedTestsEvent] =
-      new DataFileReader[GeneratedTestsEvent](new File("happy.avro"), generatedTestsDatumReader)
+    val generatedTestsDatumReader: DatumReader[SpeculativeScreenplay] = new SpecificDatumReader[SpeculativeScreenplay](happyTests.getSchema)
+    val dataFileReader: DataFileReader[SpeculativeScreenplay] =
+      new DataFileReader[SpeculativeScreenplay](new File("happy.avro"), generatedTestsDatumReader)
 
-    var testScript: GeneratedTestsEvent = null
+    var testScript: SpeculativeScreenplay = null
     while (dataFileReader.hasNext) {
       // Reuse user object by passing it to next(). This saves us from  allocating and
       // garbage collecting many objects for files with many items.
@@ -132,10 +131,10 @@ class SwaggerJsonScramConverterTest
 
 
   test("Lets serialise and deserialise with Avro using in memory") {
-    val happyTests: GeneratedTestsEvent = generateTestsFromSwagger
+    val happyTests: SpeculativeScreenplay = generateTestsFromSwagger
 
     // serialize
-    val writer: DatumWriter[GeneratedTestsEvent] = new SpecificDatumWriter[GeneratedTestsEvent](happyTests.getSchema)
+    val writer: DatumWriter[SpeculativeScreenplay] = new SpecificDatumWriter[SpeculativeScreenplay](happyTests.getSchema)
     val out = new ByteArrayOutputStream()
     val encoder = new EncoderFactory().binaryEncoder(out, null)
     writer.write(happyTests, encoder)
@@ -144,10 +143,10 @@ class SwaggerJsonScramConverterTest
     println("So encoded is : ###" + out + "###")
 
     // Deserialize  from disk
-    val reader = new SpecificDatumReader[GeneratedTestsEvent](GeneratedTestsEvent.SCHEMA$)
+    val reader = new SpecificDatumReader[SpeculativeScreenplay](SpeculativeScreenplay.SCHEMA$)
     val in: InputStream = new ByteArrayInputStream(out.toByteArray)
     val decoder: org.apache.avro.io.Decoder = new DecoderFactory().binaryDecoder(in, null)
-    val outVersion = new GeneratedTestsEvent()
+    val outVersion = new SpeculativeScreenplay()
     reader.read(outVersion, decoder)
     println("OUT: " + outVersion)
 
