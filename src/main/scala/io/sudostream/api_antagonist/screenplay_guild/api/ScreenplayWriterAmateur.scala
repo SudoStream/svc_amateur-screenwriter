@@ -1,6 +1,6 @@
-package io.sudostream.api_event_horizon.screenplay_guild.api
+package io.sudostream.api_antagonist.screenplay_guild.api
 
-import io.sudostream.api_event_horizon.messages.{HttpMethod, SpeculativeScreenplay, HttpQuestionForTheProtagonistAPI}
+import io.sudostream.api_antagonist.messages.{HttpMethod, SpeculativeScreenplay, HttpQuestionForTheProtagonistAPI}
 import io.swagger.models.{Operation, Path, Swagger}
 
 import scala.collection.JavaConverters._

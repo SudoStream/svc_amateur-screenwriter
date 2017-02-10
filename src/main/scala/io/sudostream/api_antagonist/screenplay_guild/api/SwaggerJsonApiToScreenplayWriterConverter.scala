@@ -1,4 +1,4 @@
-package io.sudostream.api_event_horizon.screenplay_guild.api
+package io.sudostream.api_antagonist.screenplay_guild.api
 
 import io.swagger.parser.SwaggerParser
 

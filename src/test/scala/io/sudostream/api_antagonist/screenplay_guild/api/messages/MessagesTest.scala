@@ -1,5 +1,6 @@
-package io.sudostream.api_event_horizon.messages
+package io.sudostream.api_antagonist.screenplay_guild.api.messages
 
+import io.sudostream.api_antagonist.messages.{HttpMethod, HttpQuestionForTheProtagonistAPI, SpeculativeScreenplay}
 import org.scalatest.FunSuite
 
 class MessagesTest extends FunSuite {

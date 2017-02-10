@@ -3,7 +3,8 @@ package bdd
 import java.io.InputStream
 
 import cucumber.api.scala.{EN, ScalaDsl}
-import io.sudostream.api_event_horizon.screenplay_guild.api.{ApiToScreenplayWriterConverter, ScreenplayWriterAmateur, SwaggerJsonApiToScreenplayWriterConverter}
+import io.sudostream.api_antagonist.screenplay_guild.api.{ApiToScreenplayWriterConverter, ScreenplayWriterAmateur, SwaggerJsonApiToScreenplayWriterConverter}
+import io.sudostream.api_antagonist.screenplay_guild.api.{ApiToScreenplayWriterConverter, SwaggerJsonApiToScreenplayWriterConverter}
 import org.scalatest.ShouldMatchers
 
 class SwaggerStarBirthResourceOperationStepDefinitions extends ScalaDsl with EN with ShouldMatchers {

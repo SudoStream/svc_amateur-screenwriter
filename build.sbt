@@ -1,6 +1,6 @@
-name := """screenplay-guild-for-amateurs"""
+name := """screenplay-guild"""
 
-organization := "io.sudostream.api-event-horizon"
+organization := "io.sudostream.api-antagonist"
 
 version := "1.0.0-SNAPSHOT"
 
@@ -16,7 +16,7 @@ resolvers += "Typesafe Repo" at "http://repo.typesafe.com/typesafe/releases/"
 //  "Artifactory" at "http://104.199.1.33/artifactory/libs-release/"
 
 libraryDependencies ++= Seq(
-  "io.sudostream.api-event-horizon" %% "aeh-messages" % "1.0.0-SNAPSHOT",
+  "io.sudostream.api-antagonist" %% "messages" % "0.0.1-SNAPSHOT",
   "io.swagger" % "swagger-parser" % "1.0.20",
   "com.typesafe.play" %% "play-json" % "2.3.4",
   "org.apache.avro" % "avro" % "1.8.1",

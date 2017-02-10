@@ -1,8 +1,8 @@
-package io.sudostream.api_event_horizon.screenplay_guild.api
+package io.sudostream.api_antagonist.screenplay_guild.api
 
 import java.io._
 
-import io.sudostream.api_event_horizon.messages.{HttpMethod, SpeculativeScreenplay}
+import io.sudostream.api_antagonist.messages.{HttpMethod, SpeculativeScreenplay}
 import io.swagger.models.Scheme
 import io.swagger.parser.SwaggerParser
 import org.apache.avro.file.{DataFileReader, DataFileWriter}
