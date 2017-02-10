@@ -84,16 +84,16 @@ class SwaggerJsonScramConverterTest
       | """.stripMargin
 
   test("Ensure that when the expected number of happy path tests are generated") {
-    val happyTests: SpeculativeScreenplay = generateTestsFromSwagger
-    assert(happyTests.templateInterrogationOfAntagonist.size === 4)
+    val speculativeScreenplay: SpeculativeScreenplay = generateTestsFromSwagger
+    assert(speculativeScreenplay.theAntagonistInterrogation.size === 4)
   }
 
   test("Ensure the top level GET /stars test has expected detail") {
-    val happyTests: SpeculativeScreenplay = generateTestsFromSwagger
-    val foundTest = happyTests.templateInterrogationOfAntagonist.filter(
+    val speculativeScreenplay: SpeculativeScreenplay = generateTestsFromSwagger
+    val foundTest = speculativeScreenplay.theAntagonistInterrogation.filter(
       test => HttpMethod.GET.equals(test.method) && test.uriPath == "/stars")
 
-    println(happyTests)
+    println(speculativeScreenplay)
     assert(foundTest.size === 1)
   }
 

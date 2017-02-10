@@ -6,7 +6,7 @@ class MessagesTest extends FunSuite {
 
   test("Lets play with avro") {
 
-    val aSingleTestDescription = TestDescription("/stars", HttpMethod.GET, List(200))
+    val aSingleHttpQuestion = HttpQuestionForTheProtagonistAPI("/stars", HttpMethod.GET, List(200))
 
     val generatedEvent =
       SpeculativeScreenplay(
@@ -17,7 +17,7 @@ class MessagesTest extends FunSuite {
         Some("api"),
         List("http"),
         List(80),
-        List(aSingleTestDescription)
+        List(aSingleHttpQuestion)
       )
 
     println("Hey Ho ... \n" + generatedEvent)

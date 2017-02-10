@@ -1,6 +1,6 @@
 package io.sudostream.api_event_horizon.scram.api
 
-import io.sudostream.api_event_horizon.messages.{HttpMethod, SpeculativeScreenplay, TestDescription}
+import io.sudostream.api_event_horizon.messages.{HttpMethod, SpeculativeScreenplay, HttpQuestionForTheProtagonistAPI}
 import io.swagger.models.{Operation, Path, Swagger}
 
 import scala.collection.JavaConverters._
@@ -20,14 +20,14 @@ class Scram(swaggerModel: Swagger) {
     val schemes = for (scheme <- swagger.getSchemes.asScala.toList) yield scheme.toValue
     val ports = List(80)
 
-    val happyPathTests = extractTheHappyTests
+    val httpQuestions = extractTheHttpQuestions
 
     SpeculativeScreenplay(
-      apiTitle, Some(apiDescription), Some(apiVersion), hostname, Some(basePath), schemes, ports, happyPathTests)
+      apiTitle, Some(apiDescription), Some(apiVersion), hostname, Some(basePath), schemes, ports, httpQuestions)
   }
 
-  def extractTheHappyTests: List[TestDescription] = {
-    val happyPathTests = collection.mutable.Set[TestDescription]()
+  def extractTheHttpQuestions: List[HttpQuestionForTheProtagonistAPI] = {
+    val happyPathTests = collection.mutable.Set[HttpQuestionForTheProtagonistAPI]()
 
     val paths = swagger.getPaths.asScala
     for ((resourceAsString, resourceObject) <- paths) {
@@ -41,7 +41,7 @@ class Scram(swaggerModel: Swagger) {
             entry => entry._1.toInt
           ).toList
 
-          val singleTest = TestDescription(resourceAsString, httpMethod, httpReturnCodes)
+          val singleTest = HttpQuestionForTheProtagonistAPI(resourceAsString, httpMethod, httpReturnCodes)
           happyPathTests.add(singleTest)
         }
       }
