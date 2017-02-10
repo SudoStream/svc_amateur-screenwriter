@@ -24,9 +24,9 @@ class SwaggerStarBirthResourceOperationStepDefinitions extends ScalaDsl with EN 
   Then("""^I should get 3 happy path tests""") { () =>
     if (starBirthScram.nonEmpty) {
       val scram = starBirthScram.get
-      val generatedTestsEvent = scram.generateHappyPathTests
-      println("looks like:-\n\n" + generatedTestsEvent.toString)
-      assert(generatedTestsEvent.apiDescription.isDefined, "API Description should be defined")
+      val speculativeScreenplay = scram.generateHappyPathTests
+      println("looks like:-\n\n" + speculativeScreenplay.toString)
+      assert(speculativeScreenplay.apiDescription.isDefined, "API Description should be defined")
     } else {
       assert(false, "Scram not created correctly")
     }

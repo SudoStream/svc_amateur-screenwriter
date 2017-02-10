@@ -109,16 +109,16 @@ class SwaggerJsonScramConverterTest
     val happyTests: SpeculativeScreenplay = generateTestsFromSwagger
 
     // serialize
-    val generatedTestsDatumWriter: DatumWriter[SpeculativeScreenplay] = new SpecificDatumWriter[SpeculativeScreenplay](happyTests.getSchema)
-    val dataFileWriter: DataFileWriter[SpeculativeScreenplay] = new DataFileWriter[SpeculativeScreenplay](generatedTestsDatumWriter)
+    val speculativeScreenplayDatumWriter: DatumWriter[SpeculativeScreenplay] = new SpecificDatumWriter[SpeculativeScreenplay](happyTests.getSchema)
+    val dataFileWriter: DataFileWriter[SpeculativeScreenplay] = new DataFileWriter[SpeculativeScreenplay](speculativeScreenplayDatumWriter)
     dataFileWriter.create(happyTests.getSchema(), new File("happy.avro"))
     dataFileWriter.append(happyTests)
     dataFileWriter.close()
 
     // Deserialize  from disk
-    val generatedTestsDatumReader: DatumReader[SpeculativeScreenplay] = new SpecificDatumReader[SpeculativeScreenplay](happyTests.getSchema)
+    val speculativeScreenplayDatumReader: DatumReader[SpeculativeScreenplay] = new SpecificDatumReader[SpeculativeScreenplay](happyTests.getSchema)
     val dataFileReader: DataFileReader[SpeculativeScreenplay] =
-      new DataFileReader[SpeculativeScreenplay](new File("happy.avro"), generatedTestsDatumReader)
+      new DataFileReader[SpeculativeScreenplay](new File("happy.avro"), speculativeScreenplayDatumReader)
 
     var testScript: SpeculativeScreenplay = null
     while (dataFileReader.hasNext) {
