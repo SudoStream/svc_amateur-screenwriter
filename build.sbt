@@ -44,18 +44,7 @@ libraryDependencies ++= {
   )
 }
 
-publishTo := {
-  val nexus = "https://my.artifact.repo.net/"
-  if (isSnapshot.value)
-    Some("Artifactory Realm" at "http://104.199.1.33/artifactory/ext-snapshot-local;build.timestamp=" + new java.util.Date().getTime)
-  else
-    Some("Artifactory Realm" at "http://104.199.1.33/artifactory/ext-release-local;build.timestamp=" + new java.util.Date().getTime)
-}
-
-//credentials += Credentials("Artifactory Realm", "[[ip_addr]]", "user", "password")
-
 enablePlugins(CucumberPlugin)
-
 CucumberPlugin.glue := "bdd"
 
 dockerExposedPorts := Seq(9000)

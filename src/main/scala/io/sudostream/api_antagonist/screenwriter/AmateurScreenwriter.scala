@@ -14,7 +14,7 @@ import org.apache.kafka.common.serialization.{ByteArrayDeserializer, ByteArraySe
 
 import scala.concurrent.ExecutionContextExecutor
 
-object ScriptWriter extends App with Service
+object AmateurScreenwriter extends App with Service
   with ProcessApiDefinition
   with kafka.ProcessApiDefinition {
 
@@ -37,6 +37,7 @@ object ScriptWriter extends App with Service
 
   publishStuffToKafka()
 
+  println(s"Binding to ${config.getString("http.interface")} on port ${config.getInt("http.port")} ")
   Http().bindAndHandle(routes, config.getString("http.interface"), config.getInt("http.port"))
 
 }
