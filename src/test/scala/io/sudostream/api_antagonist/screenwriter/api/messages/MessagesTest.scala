@@ -1,4 +1,4 @@
-package io.sudostream.api_antagonist.screenplay_guild.api.messages
+package io.sudostream.api_antagonist.screenwriter.api.messages
 
 import io.sudostream.api_antagonist.messages.{HttpMethod, HttpQuestionForTheProtagonistAPI, SpeculativeScreenplay}
 import org.scalatest.FunSuite

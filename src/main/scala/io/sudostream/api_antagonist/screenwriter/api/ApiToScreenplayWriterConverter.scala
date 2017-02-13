@@ -1,4 +1,4 @@
-package io.sudostream.api_antagonist.screenplay_guild.api
+package io.sudostream.api_antagonist.screenwriter.api
 
 trait ApiToScreenplayWriterConverter
 {

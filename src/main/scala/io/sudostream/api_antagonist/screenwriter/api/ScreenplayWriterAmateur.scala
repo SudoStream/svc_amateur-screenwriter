@@ -1,4 +1,4 @@
-package io.sudostream.api_antagonist.screenplay_guild.api
+package io.sudostream.api_antagonist.screenwriter.api
 
 import io.sudostream.api_antagonist.messages.{HttpMethod, SpeculativeScreenplay, HttpQuestionForTheProtagonistAPI}
 import io.swagger.models.{Operation, Path, Swagger}
