@@ -20,7 +20,7 @@ libraryDependencies ++= {
   val scalaTestV = "2.2.6"
 
   Seq(
-    "io.sudostream.api-antagonist" %% "messages" % "0.0.1-SNAPSHOT",
+    "io.sudostream.api-antagonist" %% "messages" % "0.0.1",
     "io.swagger" % "swagger-parser" % "1.0.20",
     "com.typesafe.play" %% "play-json" % "2.3.4",
     "org.apache.avro" % "avro" % "1.8.1",
