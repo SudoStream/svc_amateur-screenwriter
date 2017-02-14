@@ -41,7 +41,9 @@ trait ProcessApiDefinition {
           val msgToCommit = ProducerMessage.Message(
             new ProducerRecord[Array[Byte], SpeculativeScreenplay]("speculative-screenplay", speculativeScreenplay),
             msg.committableOffset)
+
           println("Screenplay : " + speculativeScreenplay)
+
           msgToCommit
       }
       .runWith(Producer.commitableSink(producerSettings))
